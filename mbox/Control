@@ -1,0 +1,2 @@
+requires: libio-vbus drivers-frst libstdc++ lua++
+maintainer: frank.mehnert@kernkonzept.com

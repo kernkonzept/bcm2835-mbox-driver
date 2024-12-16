@@ -1,0 +1,3 @@
+provides: libmbox
+requires: libio-vbus stdlibs-all
+maintainer: frank.mehnert@kernkonzept.com
