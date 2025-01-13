@@ -1,2 +1,2 @@
-requires: libio-vbus drivers-frst libstdc++ lua++
+requires: libio-vbus drivers-frst libstdc++ lua++ libmbox
 maintainer: frank.mehnert@kernkonzept.com
