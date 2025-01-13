@@ -127,9 +127,8 @@ Client::handle_mmio_read(L4Re::Mmio_space::Addr addr, l4_uint64_t &value)
       if (Bcm2835_mbox::Letter *l = get_processed_letter())
         {
           auto *msg = reinterpret_cast<Bcm2835_mbox::Message<> const *>(l->msg);
-          if (!trace.is_active())
+          if (info.is_active())
             {
-              // Do this logging here to have a client relation.
               char str[32] = "";
               msg->snprintf_msg_words(str, sizeof(str), msg->tag.get_size_in());
               info.printf("get: %s %u bytes%s %s\n",
@@ -204,9 +203,10 @@ Client::handle_mmio_write(L4Re::Mmio_space::Addr addr, l4_uint64_t value)
           -L4_EINVAL,
           "Client letter size exceeding DMA region (%llx/%08zx)",
           value + msg_size, size_mbox_data);
-      if (!trace.is_active())
+      if (info.is_active() && !trace.is_active())
         {
-          // Do this logging here to have a client relation.
+          // Do this logging here to have a client relation, but only if there
+          // is no detailed logging in mmio_write().
           char str[32] = "";
           msg->snprintf_msg_words(str, sizeof(str), msg->tag.size_out);
           info.printf("put: %s %u bytes%s\n",
