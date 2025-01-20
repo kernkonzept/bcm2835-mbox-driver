@@ -22,10 +22,10 @@
 #include "client_factory.h"
 #include "util.h"
 
-namespace {
-
 extern "C" char const _binary_mbox_lua_start[];
 extern "C" char const _binary_mbox_lua_end[];
+
+namespace {
 
 static Dbg warn(Dbg::Warn, "main");
 static Dbg info(Dbg::Info, "main");
