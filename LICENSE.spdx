@@ -1,0 +1,24 @@
+## This file states the license of this package and possibly its subpackages
+## in machine and human readable format. The PackageName refers to the package
+## whose license is defined by PackageLicenseConcluded.
+## For more information about this file format visit the SPDX website at
+## https://spdx.org
+
+## Document Information
+SPDXVersion: SPDX-2.3
+DataLicense: CC0-1.0
+DocumentNamespace: spdx:kernkonzept/bcm2835-mbox-driver-2581b6c3-d1be-4ec7-8730-ad2540371a91
+DocumentName: bcm2835-mbox-driver
+SPDXID: SPDXRef-DOCUMENT
+Creator: Organization: Kernkonzept GmbH (info@kernkonzept.com)
+Created: 2025-04-06T00:00:00Z
+
+## Package Information
+PackageName: bcm2835-mbox-driver
+SPDXID: SPDXRef-bcm2835-mbox-driver
+PackageOriginator: Organization: Kernkonzept GmbH (info@kernkonzept.com)
+PackageLicenseDeclared: MIT
+PackageLicenseConcluded: MIT
+FilesAnalyzed: false
+PackageCopyrightText: NOASSERTION
+PackageDownloadLocation: NOASSERTION
