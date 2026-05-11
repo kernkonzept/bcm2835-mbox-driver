@@ -199,6 +199,8 @@ Bcm2835_mbox::show_info()
               _dma_limit = 0xffffffffULL; // XXX is this correct?
               break;
             case 0x13: // 400
+            case 0x14: // CM4
+            case 0x15: // CM5S
               _dma_offset = 0UL; // new revision
               _dma_limit = 0xffffffffULL; // XXX is this correct?
               break;
