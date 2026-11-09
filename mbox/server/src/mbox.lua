@@ -31,3 +31,12 @@ Clocks =
   Pixel_bvb = 14,
   Vec = 15,
 };
+
+-- Reject unknown names, e.g. misspelled ones, when loading the config file.
+local function strict(t, what)
+  return setmetatable(t, { __index = function(_, k)
+    error("unknown " .. what .. " '" .. tostring(k) .. "'", 2)
+  end })
+end
+strict(Expgpio_pins, "expander GPIO pin")
+strict(Clocks, "clock")

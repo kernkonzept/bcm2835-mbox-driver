@@ -112,7 +112,7 @@ int main(int argc, char **argv)
 
   if (luaL_loadfile(ls, argv[arg_idx]) || lua_pcall(ls, 0, 0, 0))
     {
-      fprintf(stderr, "Cannot parse config file.\n");
+      fprintf(stderr, "Cannot parse config file: %s\n", lua_tostring(ls, -1));
       return 4;
     }
 
