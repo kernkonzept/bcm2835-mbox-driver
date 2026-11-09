@@ -39,7 +39,7 @@ parse_args(int argc, char *const *argv)
   static struct option const loptions[] =
   {
     { "verbose", no_argument, NULL, 'v' },
-    { "quite",   no_argument, NULL, 'q' },
+    { "quiet",   no_argument, NULL, 'q' },
     { 0,         0,           NULL, 0   },
   };
 
