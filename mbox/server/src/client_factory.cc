@@ -89,6 +89,7 @@ Client_factory::op_create(L4::Factory::Rights, L4::Ipc::Cap<void> &res,
     trace.printf("op_create(%s): expgpio pin %u\n", profile.c_str(), i);
 
   load_profile_table(_ls, "clocks", clocks);
+  lua_pop(_ls, 1);
   for (auto i: clocks)
     trace.printf("op_create(%s): clock %u\n", profile.c_str(), i);
 
