@@ -10,7 +10,9 @@
  */
 
 #include <string>
+#include <cstring>
 #include <lua.h>
+#include <lauxlib.h>
 
 #include <l4/re/error_helper>
 #include <l4/sys/cxx/ipc_epiface>
@@ -82,6 +84,25 @@ Client_factory::op_create(L4::Factory::Rights, L4::Ipc::Cap<void> &res,
       warn.printf("op_create: profile '%s' not found\n", profile.c_str());
       lua_pop(_ls, 1);
       return -L4_EINVAL;
+    }
+
+  // Reject unknown entries, e.g. misspelled ones, in the profile.
+  lua_pushnil(_ls);
+  while (lua_next(_ls, -2) != 0)
+    {
+      lua_pop(_ls, 1);
+      if (lua_type(_ls, -1) != LUA_TSTRING
+          || (   strcmp(lua_tostring(_ls, -1), "expgpio_pins") != 0
+              && strcmp(lua_tostring(_ls, -1), "clocks") != 0))
+        {
+          warn.printf("op_create: profile '%s': unknown entry '%s'\n",
+                      profile.c_str(),
+                      lua_type(_ls, -1) == LUA_TSTRING
+                        ? lua_tostring(_ls, -1)
+                        : luaL_typename(_ls, -1));
+          lua_pop(_ls, 2);
+          return -L4_EINVAL;
+        }
     }
 
   load_profile_table(_ls, "expgpio_pins", expgpio_pins);
